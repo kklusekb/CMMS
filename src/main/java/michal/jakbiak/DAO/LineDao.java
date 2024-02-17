@@ -31,11 +31,20 @@ public class LineDao {
     }
 
     public void save(List<Line> lineList) {
-        List<String> lista = new ArrayList<>();
-        for (Line LList : lineList) {
-            lista.add(lineList.toString());
+        List<String> list = new ArrayList<>();
+        for(Line lines : lineList)
+        {
+            list.add(lines.toString());
         }
+
+        try {
+            Files.writeString(lineFile.toPath(), String.join("\n",list));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 
     }
-}
+

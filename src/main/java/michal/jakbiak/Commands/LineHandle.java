@@ -8,42 +8,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LineHandle {
-  //
+    //
     private LineDao lineDao;
     public List<Line> lineList;
 
 
     public LineHandle() {
-        lineList= new ArrayList<>();
-          try {lineDao = new LineDao();} catch (Exception e) {e.printStackTrace();}
-          lineList = lineDao.load();
+        lineList = new ArrayList<>();
+        try {
+            lineDao = new LineDao();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        lineList = lineDao.load();
 
 
     }
 
-    public void handle(UserInputCommand userInputCommand)
-    {
+    public void handle(UserInputCommand userInputCommand) {
 
-        switch (userInputCommand.getAction())
-        {
+        switch (userInputCommand.getAction()) {
             case "add":
-                if(!userInputCommand.getParam().isEmpty()) {
+                if (!userInputCommand.getParam().isEmpty()) {
                     int i = userInputCommand.getParam().size();
                     String name = "";
-                    for (int a = 0; a<i; a++)
-                    {
+                    for (int a = 0; a < i; a++) {
                         name += userInputCommand.getParam().get(a) + " ";
                     }
                     this.lineList.add(new Line(name));
                     System.out.println("linia dodana");
-                }
-                else System.out.println("Błąd: Podaj nazwę linii");
+                } else System.out.println("Błąd: Podaj nazwę linii");
                 break;
             case "delete":
                 System.out.println("Linia skasowana");
                 break;
-            case "load": lineList = lineDao.load(); break;
-            case "save": lineDao.save(lineList); break;
+            case "load":
+                lineList = lineDao.load();
+                break;
+            case "save":
+                lineDao.save(lineList);
+                break;
             case "list":
                 System.out.println("Lista linii:");
                 lineList.forEach(System.out::println);
