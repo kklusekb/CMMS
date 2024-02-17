@@ -17,8 +17,8 @@ public class Line {
     public void setName(String name) {
         this.name = name;
     }
-    public String toString()
-    {
+
+    public String toString() {
         return this.getName();
     }
 

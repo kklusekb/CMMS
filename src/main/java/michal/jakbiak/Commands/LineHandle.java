@@ -1,5 +1,6 @@
 package michal.jakbiak.Commands;
 
+import michal.jakbiak.DAO.LineDao;
 import michal.jakbiak.Line;
 import michal.jakbiak.input.UserInputCommand;
 
@@ -7,25 +8,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LineHandle {
-    List<Line> lineList;
+  //
+    private LineDao lineDao;
+    public List<Line> lineList;
+
+
     public LineHandle() {
-        lineList = new ArrayList<>();
+        lineList= new ArrayList<>();
+          try {lineDao = new LineDao();} catch (Exception e) {e.printStackTrace();}
+          lineList = lineDao.load();
+
 
     }
 
     public void handle(UserInputCommand userInputCommand)
     {
 
-
         switch (userInputCommand.getAction())
         {
             case "add":
-                lineList.add(new Line(userInputCommand.getParam().get(0)));
-                System.out.println("linia dodana");
+                if(!userInputCommand.getParam().isEmpty()) {
+                    int i = userInputCommand.getParam().size();
+                    String name = "";
+                    for (int a = 0; a<i; a++)
+                    {
+                        name += userInputCommand.getParam().get(a) + " ";
+                    }
+                    this.lineList.add(new Line(name));
+                    System.out.println("linia dodana");
+                }
+                else System.out.println("Błąd: Podaj nazwę linii");
                 break;
             case "delete":
                 System.out.println("Linia skasowana");
                 break;
+            case "load": lineList = lineDao.load(); break;
+            case "save": lineDao.save(lineList); break;
             case "list":
                 System.out.println("Lista linii:");
                 lineList.forEach(System.out::println);
