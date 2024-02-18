@@ -32,13 +32,12 @@ public class LineDao {
 
     public void save(List<Line> lineList) {
         List<String> list = new ArrayList<>();
-        for(Line lines : lineList)
-        {
+        for (Line lines : lineList) {
             list.add(lines.toString());
         }
 
         try {
-            Files.writeString(lineFile.toPath(), String.join("\n",list));
+            Files.writeString(lineFile.toPath(), String.join("\n", list));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -46,5 +45,5 @@ public class LineDao {
     }
 
 
-    }
+}
 

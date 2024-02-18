@@ -36,7 +36,28 @@ public class UserInputCommand {
             }
         }
 
+    }
 
+    public String getParamByPrefix(String prefix)
+    {
+        boolean prefixFound = false;
+        StringBuilder resultBuilder = new StringBuilder();
+        if(!getParam().isEmpty())
+        {
+            int paramLength = param.size();
+            for (int i = 0; i < (paramLength-1); i++) {
+                if (param.get(i+1).charAt(0)=='-') prefixFound=false;
+                if (param.get(i).equals(prefix)) prefixFound = true;
+                if (prefixFound && (i + 1 < paramLength))
+                {
+                    resultBuilder.append(param.get(i + 1));
+                    resultBuilder.append(" ");
+                }
+
+            }
+        }
+
+        return resultBuilder.toString().strip();
     }
 
     public String toString() {

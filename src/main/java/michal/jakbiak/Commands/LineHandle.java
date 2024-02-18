@@ -27,7 +27,7 @@ public class LineHandle {
 
     public void handle(UserInputCommand userInputCommand) {
 
-        if (null!=userInputCommand.getAction()) {
+        if (null != userInputCommand.getAction()) {
             switch (userInputCommand.getAction()) {
                 case "add":
                     if (!userInputCommand.getParam().isEmpty()) {
