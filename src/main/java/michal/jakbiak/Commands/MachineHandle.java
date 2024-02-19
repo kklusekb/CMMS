@@ -1,5 +1,6 @@
 package michal.jakbiak.Commands;
 
+import michal.jakbiak.DAO.LineDao;
 import michal.jakbiak.DAO.MachineDao;
 import michal.jakbiak.Line;
 import michal.jakbiak.Machine;
@@ -13,36 +14,40 @@ public class MachineHandle {
     //Zmienne obiektowe -> lista maszyn oraz obiektDAO
     public List<Machine> machineList;
     private MachineDao machineDao;
+    private LineDao lineDao;
 
     //Konstruktor
     public MachineHandle() {
         machineList = new ArrayList<>();
-        try
-        {
+        try {
             machineDao = new MachineDao();
-        }
-        catch (Exception e) {
+            lineDao = new LineDao();
+        } catch (Exception e) {
             e.printStackTrace();
         }
+         machineList = machineDao.load();
 
     }
 
-//Główna metoda obsługująca komendy
+    //Główna metoda obsługująca komendy
     public void handle(UserInputCommand userInputCommand) {
 
-            String line;
-            String name;
-            String serialNumber;
+        String lineName;
+        Line line;
+        String name;
+        String serialNumber;
 
 
         switch (userInputCommand.getAction()) {
             case "add":
-                        line = userInputCommand.getParamByPrefix("-l");
-                        name = userInputCommand.getParamByPrefix("-n");
-                        serialNumber = userInputCommand.getParamByPrefix("-s");
-                        System.out.println("Dodanie maszyny");
-                        System.out.println(line + " " + name + " " + serialNumber);
-
+                lineName = userInputCommand.getParamByPrefix("-l");
+                name = userInputCommand.getParamByPrefix("-n");
+                serialNumber = userInputCommand.getParamByPrefix("-s");
+                System.out.println("Dodanie maszyny");
+                System.out.println(lineName + " " + name + " " + serialNumber);
+                line = lineDao.findOne(lineName)
+                        .orElseThrow(() -> new IllegalArgumentException("Linia nie znaleziona"));
+                machineList.add(new Machine(line, name, serialNumber));
                 break;
 
             case "delete":

@@ -1,5 +1,7 @@
 package michal.jakbiak.DAO;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import michal.jakbiak.Line;
 
 import java.io.File;
@@ -7,37 +9,35 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class LineDao {
     File lineFile;
+    private ObjectMapper objectMapper;
 
     public LineDao() throws IOException {
+
+        objectMapper = new ObjectMapper();
+
         lineFile = new File("./line.txt");
         if (!lineFile.exists()) lineFile.createNewFile();
     }
 
     public List<Line> load() {
-        List<Line> lineList = new ArrayList<>();
+    //    List<Line> lineList = new ArrayList<>();
         try {
-            List<String> list = Files.readAllLines(lineFile.toPath());
-            for (String list_ : list) {
-                lineList.add(new Line(list_));
-            }
+            return objectMapper.readValue(Files.readString(lineFile.toPath()), new TypeReference<>() {
+            });
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        return lineList;
     }
 
     public void save(List<Line> lineList) {
-        List<String> list = new ArrayList<>();
-        for (Line lines : lineList) {
-            list.add(lines.toString());
-        }
-
         try {
-            Files.writeString(lineFile.toPath(), String.join("\n", list));
+            Files.writeString(lineFile.toPath(), objectMapper.writeValueAsString(lineList));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -45,5 +45,10 @@ public class LineDao {
     }
 
 
+    public Optional<Line> findOne(String lineName) {
+        return load().stream()
+                .filter(c -> c.getName().equals(lineName))
+                .findAny();
+    }
 }
 

@@ -1,4 +1,1 @@
-Linia Pakowania
-Linia Rozlewania
-Linia Paletyzacji
-Linia Pakowania 2
+[{"name":"Linia do Pakowania"},{"name":"Linia do rozlewania"}]

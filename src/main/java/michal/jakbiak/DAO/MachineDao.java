@@ -44,5 +44,6 @@ public class MachineDao {
 
         this.objectMapper = new ObjectMapper();
 
+
     }
 }
