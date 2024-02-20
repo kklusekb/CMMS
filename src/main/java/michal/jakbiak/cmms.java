@@ -20,8 +20,12 @@ public class cmms {
 
         //Uruchomienie aplikacji
         System.out.println("CMMS APPLICATION v0.00");
-        System.out.println("Czas trwania awarii w tym tygodniu to: 50 minut");
-        System.out.println("MTBF to:  480 minut");
+        System.out.println("");
+        System.out.println("Dostępne komendy: line [list, add, save, load]");
+        System.out.println("                : machine [list, add, save, load] ");
+        System.out.println("                : failure [list, add, save, load] ");
+        System.out.println("                : exit ");
+        System.out.println("                : help ");
 
         //Główna pętla programu
         boolean applicationLoop = true;

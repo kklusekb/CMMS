@@ -45,11 +45,10 @@ public class Machine {
 
     @Override
     public String toString() {
-        return "Machine{" +
+        return
                 "line=" + line +
                 ", name='" + name + '\'' +
-                ", serialNumber='" + serialNumber + '\'' +
-                '}';
+                ", serialNumber='" + serialNumber + '\'';
     }
 
 }

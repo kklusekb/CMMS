@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class MachineDao {
     private ObjectMapper objectMapper;
@@ -46,4 +47,10 @@ public class MachineDao {
 
 
     }
+
+    public Optional<Machine> findOne (String machineName)
+    {
+        return load().stream().filter(m -> m.getName().equals(machineName)).findAny();
+    }
+
 }
