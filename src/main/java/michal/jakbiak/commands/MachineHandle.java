@@ -1,7 +1,7 @@
-package michal.jakbiak.Commands;
+package michal.jakbiak.commands;
 
-import michal.jakbiak.DAO.LineDao;
-import michal.jakbiak.DAO.MachineDao;
+import michal.jakbiak.dao.LineDao;
+import michal.jakbiak.dao.MachineDao;
 import michal.jakbiak.Line;
 import michal.jakbiak.Machine;
 import michal.jakbiak.input.UserInputCommand;
@@ -12,7 +12,7 @@ import java.util.List;
 public class MachineHandle {
 
     //Zmienne obiektowe -> lista maszyn oraz obiektDAO
-    public List<Machine> machineList;
+    private List<Machine> machineList;
     private MachineDao machineDao;
     private LineDao lineDao;
 

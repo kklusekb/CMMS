@@ -1,4 +1,4 @@
-package michal.jakbiak.Commands;
+package michal.jakbiak.commands;
 
 import michal.jakbiak.input.UserInputCommand;
 

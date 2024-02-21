@@ -1,10 +1,9 @@
-package michal.jakbiak.Commands;
+package michal.jakbiak.commands;
 
-import michal.jakbiak.DAO.FailureDao;
-import michal.jakbiak.DAO.LineDao;
-import michal.jakbiak.DAO.MachineDao;
+import michal.jakbiak.dao.FailureDao;
+import michal.jakbiak.dao.LineDao;
+import michal.jakbiak.dao.MachineDao;
 import michal.jakbiak.Failure;
-import michal.jakbiak.Line;
 import michal.jakbiak.Machine;
 import michal.jakbiak.input.UserInputCommand;
 
@@ -14,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public class FailureHandle {
-    List<Failure> failureList;
+    private List<Failure> failureList;
     private FailureDao failureDao;
     private MachineDao machineDao;
     private LineDao lineDao;
@@ -54,8 +53,7 @@ public class FailureHandle {
                 machine = machineDao.findOne(machineName)
                         .orElseThrow(() -> new IllegalArgumentException("Maszyna nie znaleziona"));
 
-                /*line = lineDao.findOne(lineName)
-                        .orElseThrow(() -> new IllegalArgumentException("Linia nie znaleziona")); */
+
                 failureList.add(new Failure(machine, description, dateStart, dateEnd));
                 break;
 

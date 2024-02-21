@@ -1,19 +1,19 @@
 package michal.jakbiak;
 
-import michal.jakbiak.Commands.FailureHandle;
-import michal.jakbiak.Commands.HelpHandle;
-import michal.jakbiak.Commands.LineHandle;
-import michal.jakbiak.Commands.MachineHandle;
+import michal.jakbiak.commands.FailureHandle;
+import michal.jakbiak.commands.HelpHandle;
+import michal.jakbiak.commands.LineHandle;
+import michal.jakbiak.commands.MachineHandle;
 import michal.jakbiak.input.UserInputCommand;
 import michal.jakbiak.input.UserInputManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class cmms {
+public class Cmms {
 
     public static void main(String[] args) {
-        new cmms().start();
+        new Cmms().start();
     }
 
     private void start() {

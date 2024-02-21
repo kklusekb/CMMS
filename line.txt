@@ -1,1 +1,1 @@
-[{"name":"Linia do Pakowania"},{"name":"Linia do rozlewania"}]
+[{"name":"Linia do Pakowania"},{"name":"Linia do rozlewania"},{"name":"Linia do Paletyzacji"}]

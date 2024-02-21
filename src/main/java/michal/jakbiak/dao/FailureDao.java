@@ -1,9 +1,8 @@
-package michal.jakbiak.DAO;
+package michal.jakbiak.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import michal.jakbiak.Failure;
-import michal.jakbiak.Machine;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,6 @@
-package michal.jakbiak.Commands;
+package michal.jakbiak.commands;
 
-import michal.jakbiak.DAO.LineDao;
+import michal.jakbiak.dao.LineDao;
 import michal.jakbiak.Line;
 import michal.jakbiak.input.UserInputCommand;
 
@@ -10,7 +10,7 @@ import java.util.List;
 public class LineHandle {
     //
     private LineDao lineDao;
-    public List<Line> lineList;
+    private List<Line> lineList;
 
 
     public LineHandle() {

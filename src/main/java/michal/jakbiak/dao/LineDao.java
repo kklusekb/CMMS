@@ -1,4 +1,4 @@
-package michal.jakbiak.DAO;
+package michal.jakbiak.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,9 +7,7 @@ import michal.jakbiak.Line;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public class LineDao {
